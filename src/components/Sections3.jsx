@@ -81,7 +81,7 @@ export function GTM() {
 
 const reach = [['180+', 'Countries'], ['3,500+', 'Airports'], ['2,500+', 'Cities'], ['5,000+', 'Providers']]
 const hubs = [
-  ['gl-uae', 'UAE Base', 'Global Operations'],
+  ['gl-uae', 'HQ', 'Global Operations'],
   ['gl-partners', 'Strategic Partners', 'Across Continents'],
   ['gl-local', 'Local Expertise', 'Global Impact'],
 ]
@@ -94,8 +94,8 @@ export function GlobalReach() {
           <Eyebrow>Global reach</Eyebrow>
           <h2 className="h-md">A Truly Global Platform</h2>
           <p>
-            From our base in the UAE, Orbit Nine operates across continents, connecting partners,{' '}
-            <span className="text-link">travelers</span> and opportunities worldwide.
+            Through our partner network of Wipe Technologies we are connected through {' '}
+            <span className="text-link">Global</span> land mobility segment across.
           </p>
           <dl className="global__stats">
             {reach.map(([v, l]) => (
@@ -205,8 +205,7 @@ export function Investors() {
           <Eyebrow>For investors</Eyebrow>
           <h2 className="h-lg2">Investment &amp; <Accent>Growth Opportunities</Accent></h2>
           <p>
-            We are actively seeking strategic investors, vision partners and funding to scale our platform and
-            accelerate global expansion.
+            Qualified investors get an opportunity to be a part of a trillion dollar industry building space economy from Today.
           </p>
           <div className="btn-row">
             <Button variant="primary" href="#contact">Get In Touch</Button>

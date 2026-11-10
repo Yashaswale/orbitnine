@@ -10,7 +10,7 @@ import collabIndustryImg from '../assets/collab-industry.webp'
 const eco = [
   ['eco-tech', 'Space Tech', 'Innovative technologies for a safer, more accessible future.'],
   ['eco-tourism', 'Space Tourism', 'Experiences for individuals and businesses.'],
-  ['eco-investors', 'Investors & Funders', 'Capital for the next generation of space innovation.'],
+  ['eco-investors', 'Investors & Opportunities', 'Capital for the next generation of space innovation.'],
   ['eco-partners', 'Global Partnerships', 'Connecting markets worldwide.'],
   ['eco-economy', 'Space Economy', 'Real-world impact on Earth and beyond.'],
   ['eco-infra', 'Infrastructure', 'Stations, launch systems and ground networks.'],
@@ -158,9 +158,9 @@ const collabData = [
   {
     id: 'invest',
     icon: 'col-invest',
-    tabTitle: 'Investors & Funders',
+    tabTitle: 'Investors & Opportunities',
     tabText: 'Fuel the next wave of space innovation.',
-    eyebrow: 'INVESTORS & FUNDERS',
+    eyebrow: 'INVESTORS ',
     headline: 'Fuel the Next Wave',
     desc: 'We partner with investors and funders to scale programs, platforms and ventures across a space economy projected to reach $1.8 trillion by 2035.',
     image: collabInvestImg,

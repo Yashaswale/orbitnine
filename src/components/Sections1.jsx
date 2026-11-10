@@ -6,7 +6,6 @@ import seg3 from '../assets/seg3.webp'
 import tourismImg from '../assets/tourism.webp'
 
 const stats = [
-  ['Market size', '$1.8T', 'Projected global space economy by 2035'],
   ['Growth', '~9%', 'Average yearly growth, outpacing global GDP'],
   ['Today', '3', 'Space segments active now: orbital, suborbital, zero-g'],
   ['Network', '180+', 'Countries reached through our partner network'],
@@ -16,30 +15,15 @@ export function Hero() {
   return (
     <section className="hero" id="top">
       <div className="container hero__content">
-        <Eyebrow className="hero__eyebrow">One mobility ecosystem<br />from earth to orbit</Eyebrow>
         <h1 className="hero__title">
           Powering the Global <br />
           <Accent>Commercial Space</Accent> <br />
           Ecosystem
         </h1>
         <p className="hero__text">
-          Orbit Nine connects people, technology and opportunities across land, air, sea and space,
-          enabling a more connected, sustainable and prosperous future.
+          Welcome to the future of Space Economy
         </p>
         <Button variant="primary" className="hero__btn" href="#ecosystem">Explore Our Ecosystem</Button>
-      </div>
-      <div className="container">
-        <dl className="hero__stats">
-          {stats.map(([label, value, desc]) => (
-            <div className="hero__stat" key={label}>
-              <dt className="eyebrow eyebrow--sm">{label}</dt>
-              <dd>
-                <span className="hero__stat-value">{value}</span>
-                <span className="hero__stat-desc">{desc}</span>
-              </dd>
-            </div>
-          ))}
-        </dl>
       </div>
     </section>
   )
@@ -96,6 +80,19 @@ export function Services() {
           )
         })}
       </div>
+      <div className="container">
+        <dl className="hero__stats">
+          {stats.map(([label, value, desc]) => (
+            <div className="hero__stat" key={label}>
+              <dt className="eyebrow eyebrow--sm">{label}</dt>
+              <dd>
+                <span className="hero__stat-value">{value}</span>
+                <span className="hero__stat-desc">{desc}</span>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
     </section>
   )
 }
@@ -124,7 +121,7 @@ export function CoreSegments() {
             <article className="seg-card" key={title}>
               <div className="seg-card__media">
                 <img src={img} alt="" loading="lazy" />
-                <span className="badge-live">Live</span>
+                {/* <span className="badge-live">Live</span> */}
                 <span className="seg-card__icon"><Icon name="seg-sat" size={24} /></span>
               </div>
               <div className="seg-card__body">
@@ -157,10 +154,10 @@ export function Tourism() {
           <Eyebrow>Future vision</Eyebrow>
           <h2 className="tourism__title">Space Tourism</h2>
           <p className="tourism__lead">Not just a destination. A new perspective.</p>
-          <p className="tourism__text">
+          {/* <p className="tourism__text">
             In the long term, Orbit Nine will launch a dedicated space tourism company, offering suborbital
             and orbital experiences for individuals, corporates and research partners.
-          </p>
+          </p> */}
           <Button>The Journey Awaits</Button>
         </div>
         <ul className="tourism__list">
