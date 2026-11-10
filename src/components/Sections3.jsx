@@ -5,11 +5,11 @@ import valueImg from '../assets/value.webp'
 import valueImgMobile from '../assets/value-m.webp'
 
 const phases = [
-  ['Today', 'Core segments live', 'Orbital access, suborbital and zero-gravity experiences through partners.'],
-  ['Near-term', 'Platform and partnerships', 'Booking technology and integrations across travel and space providers.'],
-  ['Mid-term', 'Global expansion', 'New markets, regions and customer segments from our UAE base.'],
-  ['Future', 'Orbit Nine Space Tourism', 'A dedicated company for suborbital and orbital journeys.'],
-  ['Horizon', 'Living beyond Earth', 'Orbital habitats and lunar tourism as the long-term frontier.'],
+  ['Today', 'Establishing the Ecosystem', 'Connecting customers, space companies and industry partners through orbital and suborbital access, space experiences and commercial space solutions.'],
+  ['Near-term', 'Building the Platform', 'Developing our global space commerce platform, integrating service providers, technology partners and commercial opportunities across the space industry.'],
+  ['Mid-term', 'Global Market Expansion', 'Expanding into strategic markets, establishing international partnerships and connecting governments, investors, institutions and commercial space enterprises.'],
+  ['Future', 'Expanding Space Access', 'Establishing Orbit Nine Space Tourism as a dedicated venture, expanding access to suborbital, orbital and next-generation space experiences.'],
+  ['Horizon', 'Beyond Earth’s Boundaries', 'Enabling access to orbital habitats, commercial space infrastructure, lunar exploration and the emerging off-Earth economy.'],
 ]
 
 export function Roadmap() {
@@ -19,11 +19,10 @@ export function Roadmap() {
         <div className="roadmap__head">
           <div>
             <Eyebrow>Growth roadmap</Eyebrow>
-            <h2 className="h-md">A Phased Path from <Accent>Today to the Horizon</Accent></h2>
+            <h2 className="h-md">A Phased Journey from<Accent>Earth to Orbit</Accent></h2>
           </div>
           <p>
-            Each phase builds on proven revenue and partnerships from the one before, so growth stays measured
-            and capital-efficient.
+            Each phase builds on strategic partnerships, commercial opportunities and ecosystem development, creating a scalable foundation for long-term global growth.
           </p>
         </div>
         <ol className="timeline">

@@ -80,19 +80,6 @@ export function Services() {
           )
         })}
       </div>
-      <div className="container">
-        <dl className="hero__stats">
-          {stats.map(([label, value, desc]) => (
-            <div className="hero__stat" key={label}>
-              <dt className="eyebrow eyebrow--sm">{label}</dt>
-              <dd>
-                <span className="hero__stat-value">{value}</span>
-                <span className="hero__stat-desc">{desc}</span>
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </div>
     </section>
   )
 }
