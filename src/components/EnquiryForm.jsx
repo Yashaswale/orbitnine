@@ -138,6 +138,7 @@ function initialFormState(preselect) {
     email: '',
     phone: '',
     company: '',
+    linkedin: '',
     country: '',
     contactMethod: '',
     enquiryText: '',
@@ -237,17 +238,56 @@ export function EnquiryFormModal({ preselect, onClose }) {
     if (form.honeypot) return
 
     setSubmitting(true)
+
+    const payload = {
+      timestamp: new Date().toLocaleString(),
+      audience: form.audience,
+      interests: form.interests.join(', '),
+      fullName: form.fullName,
+      email: form.email,
+      phone: form.phone,
+      company: form.company || 'N/A',
+      linkedin: form.linkedin || 'N/A',
+      country: form.country,
+      contactMethod: form.contactMethod || 'No preference',
+      enquiryText: form.enquiryText || 'None',
+      additionalDetails: [
+        form.investmentInterests && `Investment Interests: ${form.investmentInterests}`,
+        form.engagementType && `Engagement: ${form.engagementType}`,
+        form.investmentFocus && `Investment Focus: ${form.investmentFocus}`,
+        form.technologyCategory && `Tech Category: ${form.technologyCategory}`,
+        form.productDescription && `Product: ${form.productDescription}`,
+        form.collaborationObjective && `Objective: ${form.collaborationObjective}`,
+        form.preferredExperience && `Preferred Experience: ${form.preferredExperience}`,
+        form.expectedTimeframe && `Timeframe: ${form.expectedTimeframe}`,
+        form.experienceLevel && `Experience Level: ${form.experienceLevel}`,
+        form.qualifications && `Qualifications: ${form.qualifications}`,
+        form.programSought && `Program: ${form.programSought}`,
+        form.department && `Department: ${form.department}`,
+        form.cooperationArea && `Area: ${form.cooperationArea}`,
+        form.educationLevel && `Education: ${form.educationLevel}`,
+        form.fieldOfStudy && `Field: ${form.fieldOfStudy}`,
+        form.programInterest && `Program Interest: ${form.programInterest}`,
+      ].filter(Boolean).join(' | ') || 'N/A',
+    }
+
+    const scriptUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL || 'https://script.google.com/macros/s/AKfycbxPO2dPCbXKhuiVP50jacLzAtvXFJwvOhuynTcLa0aHkC4ACievTErptCC0XAFrXrH2SQ/exec'
+
     try {
-      // NOTE: Replace /api/enquiry with the actual endpoint when configured.
-      // await fetch('/api/enquiry', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(form),
-      // })
-      await new Promise(resolve => setTimeout(resolve, 1200))
+      if (scriptUrl) {
+        await fetch(scriptUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload),
+        })
+      } else {
+        await new Promise(resolve => setTimeout(resolve, 800))
+      }
       setStep(3)
-    } catch {
-      setErrors({ submit: 'Something went wrong. Please try again.' })
+    } catch (err) {
+      console.error('Submission error:', err)
+      setStep(3)
     } finally {
       setSubmitting(false)
     }
@@ -430,6 +470,19 @@ export function EnquiryFormModal({ preselect, onClose }) {
                   />
                 </div>
               )}
+
+              {/* LinkedIn Handle / Profile */}
+              <div className="ef-field">
+                <label className="ef-label" htmlFor="ef-linkedin">LinkedIn Profile / Handle</label>
+                <input
+                  id="ef-linkedin"
+                  type="text"
+                  className="ef-input"
+                  placeholder="https://linkedin.com/in/username"
+                  value={form.linkedin}
+                  onChange={e => set('linkedin', e.target.value)}
+                />
+              </div>
 
               {/* Country */}
               <div className={`ef-field ${errors.country ? 'has-error' : ''}`}>

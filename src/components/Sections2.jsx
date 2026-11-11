@@ -125,7 +125,7 @@ export function Partnerships() {
         </p>
         <div className="btn-row">
           <button type="button" className="btn btn--primary" onClick={() => openForm('Industry / Strategic Partner', ['Space Industry Collaboration'])}>Partner With Us →</button>
-          <Button variant="outline" arrow={false}>Explore Programs</Button>
+          <Button variant="outline" arrow={false} onClick={() => openForm('Student / Researcher', ['Space Fellowships & Education'])}>Explore Programs</Button>
         </div>
       </div>
     </section>
@@ -168,7 +168,7 @@ const collabData = [
     tabText: 'Fuel the next wave of space innovation.',
     eyebrow: 'INVESTORS ',
     headline: 'Fuel the Next Wave',
-    desc: 'We partner with investors, family offices, sovereign wealth funds and institutional capital partners to scale programmes, platforms and ventures across the global space economy….',
+    desc: 'We partner with investors, family offices, sovereign wealth funds and institutional capital partners to scale programmes, platforms and ventures across the global space economy, We partner with investors and funders to scale programs, platforms and ventures across a space economy projected to reach $1.8 trillion by 2035.',
     image: collabInvestImg,
     alt: 'Rocket launching into space above clouds and Earth',
     ctaText: 'Partner With Us',

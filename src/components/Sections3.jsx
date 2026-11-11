@@ -68,10 +68,15 @@ export function GTM() {
               <span className="icon-box icon-box--60"><Icon name={icon} size={30} /></span>
               <h3>{title}</h3>
               <p>{text}</p>
-              <a href="#contact" className="gtm-card__link">
+              <button
+                type="button"
+                className="gtm-card__link"
+                onClick={() => openForm('Industry / Strategic Partner', ['Global Market Entry & Business Development'])}
+                style={{ background: 'none', border: 'none', padding: 0, font: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+              >
                 <span>Learn more</span>
                 <Arrow size={13} />
-              </a>
+              </button>
             </article>
           ))}
         </div>
@@ -88,6 +93,7 @@ const hubs = [
 ]
 
 export function GlobalReach() {
+  const { openForm } = useEnquiryForm()
   return (
     <section className="global" id="global">
       <div className="container global__inner">
@@ -103,7 +109,7 @@ export function GlobalReach() {
               <div key={l}><dt>{v}</dt><dd>{l}</dd></div>
             ))}
           </dl>
-          <Button>Our Global Network</Button>
+          <Button onClick={() => openForm('Industry / Strategic Partner', ['Global Market Entry & Business Development'])}>Our Global Network</Button>
         </div>
         <div className="global__map">
           <img src={mapImg} alt="Illuminated world map with connection routes" loading="lazy" />
@@ -173,7 +179,7 @@ export function Education() {
               We engage with investors, partners and governments to create long-term economic value, expand space
               infrastructure and make space opportunities accessible to more people.
             </p>
-            <Button>Our Global Reach</Button>
+            <Button onClick={() => openForm('Investor / Family Office / Financial Institution', ['Investment & Capital Partnerships'])}>Our Global Reach</Button>
           </div>
           <ul className="value-list">
             {values.map(([t, s]) => (
@@ -212,7 +218,7 @@ export function Investors() {
           </p>
           <div className="btn-row">
             <button type="button" className="btn btn--primary" onClick={() => openForm('Investor / Family Office / Financial Institution', ['Investment & Capital Partnerships'])}>Get In Touch →</button>
-            <Button variant="glass" arrow={false} href="#roadmap">View Growth Roadmap</Button>
+            <Button variant="glass" arrow={false} onClick={() => openForm('Investor / Family Office / Financial Institution', ['Investment & Capital Partnerships'])}>View Growth Roadmap</Button>
           </div>
         </div>
         <div className="numbers">

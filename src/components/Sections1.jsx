@@ -13,6 +13,7 @@ const stats = [
 ]
 
 export function Hero() {
+  const { openForm } = useEnquiryForm()
   return (
     <section className="hero" id="top">
       <div className="container hero__content">
@@ -24,7 +25,7 @@ export function Hero() {
         <p className="hero__text">
           Welcome to the future of Space Economy
         </p>
-        <Button variant="primary" className="hero__btn" href="#ecosystem">Explore Our Ecosystem</Button>
+        <Button variant="primary" className="hero__btn" onClick={() => openForm()}>Explore Our Ecosystem</Button>
       </div>
     </section>
   )
@@ -92,6 +93,7 @@ const segments = [
 ]
 
 export function CoreSegments() {
+  const { openForm } = useEnquiryForm()
   return (
     <section className="core starfield starfield--core">
       <div className="core__inner">
@@ -102,7 +104,7 @@ export function CoreSegments() {
             We currently focus on three key space segments, laying the groundwork for a larger vision
             that includes space tourism in the future.
           </p>
-          <Button href="#roadmap">See the Roadmap</Button>
+          <Button onClick={() => openForm('Industry / Strategic Partner', ['Orbital & Suborbital Access'])}>See the Roadmap</Button>
         </div>
         <div className="core__cards">
           {segments.map(([img, title, text, link]) => (
@@ -115,7 +117,18 @@ export function CoreSegments() {
               <div className="seg-card__body">
                 <h3>{title}</h3>
                 <p>{text}</p>
-                <a href="#" className="link">{link} <Arrow size={12} /></a>
+                <button
+                  type="button"
+                  className="link"
+                  onClick={() => {
+                    if (title.includes('Zero Gravity')) openForm('Individual', ['Zero-Gravity Experiences'])
+                    else if (title.includes('Suborbital')) openForm('Individual', ['Orbital & Suborbital Access'])
+                    else openForm('Space Technology Company', ['Orbital & Suborbital Access'])
+                  }}
+                  style={{ background: 'none', border: 'none', padding: 0, font: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                >
+                  {link} <Arrow size={12} />
+                </button>
               </div>
             </article>
           ))}

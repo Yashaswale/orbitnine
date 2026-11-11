@@ -14,9 +14,17 @@ export function Arrow({ size = 14 }) {
   )
 }
 
-export function Button({ children, variant = 'ghost', href = '#', className = '', arrow = true }) {
+export function Button({ children, variant = 'ghost', href, onClick, className = '', arrow = true, type = 'button' }) {
+  if (onClick || !href) {
+    return (
+      <button type={type} onClick={onClick} className={`btn btn--${variant} ${className}`}>
+        <span>{children}</span>
+        {arrow && <Arrow />}
+      </button>
+    )
+  }
   return (
-    <a href={href} className={`btn btn--${variant} ${className}`}>
+    <a href={href} onClick={onClick} className={`btn btn--${variant} ${className}`}>
       <span>{children}</span>
       {arrow && <Arrow />}
     </a>
