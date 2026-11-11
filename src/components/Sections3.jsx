@@ -1,4 +1,5 @@
 import { Icon, Button, Eyebrow, Accent, Arrow } from './ui.jsx'
+import { useEnquiryForm } from './EnquiryForm.jsx'
 import mapImg from '../assets/map.webp'
 import eduImg from '../assets/edu-photo.webp'
 import valueImg from '../assets/value.webp'
@@ -48,6 +49,7 @@ const gtm = [
 ]
 
 export function GTM() {
+  const { openForm } = useEnquiryForm()
   return (
     <section className="gtm">
       <div className="container gtm__inner">
@@ -58,7 +60,7 @@ export function GTM() {
             Our go-to-market strategy is built on strategic partnerships, platform technology and ecosystem
             collaboration, ensuring seamless access, scalability and long-term growth.
           </p>
-          <Button>Our GTM Approach</Button>
+          <button type="button" className="btn btn--ghost" onClick={() => openForm()}>Our GTM Approach →</button>
         </div>
         <div className="gtm__cards">
           {gtm.map(([icon, title, text]) => (
@@ -132,6 +134,7 @@ const values = [
 ]
 
 export function Education() {
+  const { openForm } = useEnquiryForm()
   return (
     <section className="education starfield starfield--edu">
       <div className="container">
@@ -144,7 +147,7 @@ export function Education() {
               Through fellowships, student exchange programs and hands-on experiences, we're building a global
               pipeline of future space leaders.
             </p>
-            <Button>Partner on Programs</Button>
+            <button type="button" className="btn btn--ghost" onClick={() => openForm('Student / Researcher', ['Space Fellowships & Education'])}>Partner on Programs →</button>
           </div>
         </article>
 
@@ -197,6 +200,7 @@ const numbers = [
 ]
 
 export function Investors() {
+  const { openForm } = useEnquiryForm()
   return (
     <section className="investors" id="investors">
       <div className="container investors__inner">
@@ -207,7 +211,7 @@ export function Investors() {
             Qualified investors get an opportunity to be a part of a trillion dollar industry building space economy from Today.
           </p>
           <div className="btn-row">
-            <Button variant="primary" href="#contact">Get In Touch</Button>
+            <button type="button" className="btn btn--primary" onClick={() => openForm('Investor / Family Office / Financial Institution', ['Investment & Capital Partnerships'])}>Get In Touch →</button>
             <Button variant="glass" arrow={false} href="#roadmap">View Growth Roadmap</Button>
           </div>
         </div>
@@ -244,6 +248,7 @@ const social = {
 }
 
 export function Connect() {
+  const { openForm } = useEnquiryForm()
   return (
     <section className="connect" id="contact">
       <div className="container connect__inner">
@@ -251,7 +256,7 @@ export function Connect() {
           <Eyebrow>Let's connect</Eyebrow>
           <h2 className="h-md">Let's Build What's Next</h2>
           <p>Partner with us, invest in the future, or explore opportunities to be part of the global space economy.</p>
-          <Button variant="glass" href="mailto:hello@orbitnine.com">Partner With Us</Button>
+          <button type="button" className="btn btn--glass" onClick={() => openForm()}>Partner With Us →</button>
         </div>
         <div className="connect__brand">
           <p className="connect__logo">ORBIT NINE</p>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Icon, Button, Eyebrow, Accent, Arrow } from './ui.jsx'
+import { useEnquiryForm } from './EnquiryForm.jsx'
 import seg1 from '../assets/seg1.webp'
 import seg2 from '../assets/seg2.webp'
 import seg3 from '../assets/seg3.webp'
@@ -131,6 +132,7 @@ const journeys = [
 ]
 
 export function Tourism() {
+  const { openForm } = useEnquiryForm()
   return (
     <section className="tourism" id="tourism">
       <div className="tourism__media">
@@ -145,7 +147,7 @@ export function Tourism() {
             In the long term, Orbit Nine will launch a dedicated space tourism company, offering suborbital
             and orbital experiences for individuals, corporates and research partners.
           </p> */}
-          <Button>The Journey Awaits</Button>
+          <button type="button" className="btn btn--ghost" onClick={() => openForm('Individual', ['Space Tourism & Experiences'])}>The Journey Awaits</button>
         </div>
         <ul className="tourism__list">
           {journeys.map(([icon, title, sub]) => (

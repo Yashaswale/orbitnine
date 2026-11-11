@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Icon, Button, Eyebrow, Accent, Arrow } from './ui.jsx'
+import { useEnquiryForm } from './EnquiryForm.jsx'
 import partnersImg from '../assets/partners.webp'
 import satelliteImg from '../assets/satellite.webp'
 import collabUniImg from '../assets/collab-uni.webp'
@@ -109,6 +110,7 @@ export function Ecosystem() {
 }
 
 export function Partnerships() {
+  const { openForm } = useEnquiryForm()
   return (
     <section className="partnerships" id="partners">
       <div className="partnerships__media">
@@ -122,7 +124,7 @@ export function Partnerships() {
           shape the next era of space mobility.
         </p>
         <div className="btn-row">
-          <Button variant="primary" href="#contact">Partner With Us</Button>
+          <button type="button" className="btn btn--primary" onClick={() => openForm('Industry / Strategic Partner', ['Space Industry Collaboration'])}>Partner With Us →</button>
           <Button variant="outline" arrow={false}>Explore Programs</Button>
         </div>
       </div>
@@ -142,6 +144,8 @@ const collabData = [
     image: satelliteImg,
     alt: 'Satellite orbiting Earth with a network of connections',
     ctaText: 'Partner With Us',
+    audience: 'Space Technology Company',
+    interest: 'Space Technology & Commercialisation',
   },
   {
     id: 'uni',
@@ -154,6 +158,8 @@ const collabData = [
     image: collabUniImg,
     alt: 'Researchers analyzing a holographic glowing Earth in mission control',
     ctaText: 'Partner With Us',
+    audience: 'Research / Academic Institution',
+    interest: 'Research & Innovation',
   },
   {
     id: 'invest',
@@ -166,6 +172,8 @@ const collabData = [
     image: collabInvestImg,
     alt: 'Rocket launching into space above clouds and Earth',
     ctaText: 'Partner With Us',
+    audience: 'Investor / Family Office / Financial Institution',
+    interest: 'Investment & Capital Partnerships',
   },
   {
     id: 'gov',
@@ -178,6 +186,8 @@ const collabData = [
     image: collabGovImg,
     alt: 'Neoclassical grand government institutional palace illuminated at sunset',
     ctaText: 'Partner With Us',
+    audience: 'Space Agency / Government Institution',
+    interest: 'Government & Institutional Partnerships',
   },
   {
     id: 'industry',
@@ -190,12 +200,15 @@ const collabData = [
     image: collabIndustryImg,
     alt: 'Gold communication satellite with solar panels orbiting Earth',
     ctaText: 'Partner With Us',
+    audience: 'Industry / Strategic Partner',
+    interest: 'Space Industry Collaboration',
   },
 ]
 
 export function Collaborate() {
   const [activeTab, setActiveTab] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const { openForm } = useEnquiryForm()
 
   useEffect(() => {
     if (isPaused) return
@@ -257,8 +270,7 @@ export function Collaborate() {
             <Eyebrow>{active.eyebrow}</Eyebrow>
             <h3 className="h-md">{active.headline}</h3>
             <p>{active.desc}</p>
-            <Button href="#contact">{active.ctaText}</Button>
-          </div>
+            <button type="button" className="btn btn--ghost" onClick={() => openForm(active.audience, [active.interest])}>{active.ctaText} →</button>          </div>
         </article>
       </div>
     </section>

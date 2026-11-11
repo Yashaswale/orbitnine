@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useEnquiryForm } from './EnquiryForm.jsx'
 
 const links = [
   ['Services', '#services'],
@@ -15,6 +16,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState('#services')
+  const { openForm } = useEnquiryForm()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
@@ -42,9 +44,9 @@ export default function Header() {
               {label}
             </a>
           ))}
-          <a href="#contact" className="btn btn--glass nav__cta-mobile" onClick={() => setOpen(false)}>Partner With Us</a>
+          <a href="#contact" className="btn btn--glass nav__cta-mobile" onClick={() => { openForm(); setOpen(false) }}>Connect with Orbit Nine</a>
         </nav>
-        <a href="#contact" className="btn btn--glass header__cta">Partner With Us</a>
+        <button type="button" className="btn btn--glass header__cta" onClick={() => openForm()}>Connect with Orbit Nine →</button>
         <button
           className="burger"
           aria-label={open ? 'Close menu' : 'Open menu'}

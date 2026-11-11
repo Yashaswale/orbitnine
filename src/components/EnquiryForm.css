@@ -1,0 +1,529 @@
+/* ==========================================================================
+   Orbit Nine – Enquiry Form Modal
+   ========================================================================== */
+
+/* ── Overlay ── */
+.ef-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(1, 4, 14, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: ef-fade-in 0.25s ease both;
+}
+
+@keyframes ef-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Modal panel ── */
+.ef-modal {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+  background: rgba(5, 8, 18, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 20px;
+  box-shadow:
+    0 0 0 1px rgba(74, 150, 255, 0.08),
+    0 32px 80px rgba(0, 0, 0, 0.7),
+    0 0 60px rgba(74, 150, 255, 0.04);
+  animation: ef-slide-up 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(74, 150, 255, 0.25) transparent;
+}
+
+@keyframes ef-slide-up {
+  from { opacity: 0; transform: translateY(28px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ef-modal::-webkit-scrollbar { width: 4px; }
+.ef-modal::-webkit-scrollbar-thumb { background: rgba(74, 150, 255, 0.25); border-radius: 4px; }
+
+/* ── Header ── */
+.ef-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.75rem 1rem;
+  background: rgba(5, 8, 18, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ef-brand {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ef-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+
+.ef-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* ── Progress ── */
+.ef-progress {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ef-progress__step {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  transition: color 0.3s;
+}
+
+.ef-progress__step span:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  font-size: 11px;
+  font-weight: 600;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.ef-progress__step.is-active {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ef-progress__step.is-active span:first-child {
+  background: rgba(74, 150, 255, 0.18);
+  border-color: rgba(74, 150, 255, 0.6);
+  color: #4a96ff;
+}
+
+.ef-progress__label {
+  font-weight: 500;
+}
+
+.ef-progress__line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Body ── */
+.ef-body {
+  padding: 2rem 1.75rem 2rem;
+}
+
+.ef-body--success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 1.75rem;
+  gap: 1rem;
+}
+
+/* ── Typography ── */
+.ef-heading {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 0.4rem;
+  line-height: 1.25;
+}
+
+.ef-subheading {
+  font-size: 0.875rem;
+  color: var(--muted, #a9b6cc);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* ── Fields ── */
+.ef-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-bottom: 1.25rem;
+}
+
+.ef-field:last-of-type {
+  margin-bottom: 0;
+}
+
+.ef-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.ef-required {
+  color: #4a96ff;
+  margin-left: 2px;
+}
+
+.ef-input,
+.ef-textarea,
+.ef-select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+}
+
+.ef-input,
+.ef-select { padding: 0.72rem 1rem; }
+
+.ef-select { padding-right: 2.5rem; cursor: pointer; }
+
+.ef-input--search {
+  margin-bottom: 0.4rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.ef-textarea {
+  padding: 0.75rem 1rem;
+  resize: vertical;
+  min-height: 90px;
+}
+
+.ef-input::placeholder,
+.ef-textarea::placeholder { color: rgba(255, 255, 255, 0.22); }
+
+.ef-input:focus,
+.ef-textarea:focus,
+.ef-select:focus {
+  border-color: rgba(74, 150, 255, 0.55);
+  box-shadow: 0 0 0 3px rgba(74, 150, 255, 0.1);
+  background: rgba(74, 150, 255, 0.04);
+}
+
+.ef-select option {
+  background: #060f28;
+  color: #fff;
+}
+
+.ef-select-wrap {
+  position: relative;
+}
+
+.ef-select-icon {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* Error states */
+.has-error .ef-input,
+.has-error .ef-select,
+.has-error .ef-textarea {
+  border-color: rgba(255, 90, 90, 0.5);
+}
+
+.ef-error {
+  font-size: 11.5px;
+  color: #ff7070;
+  margin: 0;
+}
+
+.ef-error--global {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* ── Interest Pills ── */
+.ef-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ef-pill {
+  padding: 0.42rem 0.9rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s, color 0.18s, box-shadow 0.18s;
+  user-select: none;
+}
+
+.ef-pill:hover {
+  background: rgba(74, 150, 255, 0.1);
+  border-color: rgba(74, 150, 255, 0.4);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ef-pill.is-active {
+  background: rgba(74, 150, 255, 0.15);
+  border-color: rgba(74, 150, 255, 0.65);
+  color: #c0dbff;
+  box-shadow: 0 0 10px rgba(74, 150, 255, 0.15);
+}
+
+/* ── Grid ── */
+.ef-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1.25rem;
+}
+
+/* ── Conditional fields divider ── */
+.ef-conditional {
+  margin-top: 1.5rem;
+}
+
+.ef-conditional__divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.ef-conditional__divider::before,
+.ef-conditional__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.ef-conditional__divider span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+}
+
+/* ── Checkbox ── */
+.ef-field--check { margin-top: 1.5rem; }
+
+.ef-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.ef-checkbox input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.ef-checkbox__box {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  margin-top: 1px;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.ef-checkbox input:checked ~ .ef-checkbox__box {
+  background: rgba(74, 150, 255, 0.2);
+  border-color: rgba(74, 150, 255, 0.7);
+  box-shadow: 0 0 0 3px rgba(74, 150, 255, 0.1);
+}
+
+.ef-checkbox input:checked ~ .ef-checkbox__box::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: 2px solid #4a96ff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(42deg);
+}
+
+.ef-checkbox__label {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.55;
+}
+
+.ef-link {
+  color: #4a96ff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.ef-link:hover { opacity: 1; }
+
+/* ── Honeypot (hidden from humans) ── */
+.ef-honeypot {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  tab-index: -1;
+}
+
+/* ── Action buttons ── */
+.ef-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.ef-actions--2 {
+  justify-content: space-between;
+}
+
+.ef-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.72rem 1.6rem;
+  border-radius: 100px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, opacity 0.2s;
+  border: 1px solid transparent;
+}
+
+.ef-btn--primary {
+  background: rgba(74, 150, 255, 0.18);
+  border-color: rgba(74, 150, 255, 0.5);
+  color: #c8deff;
+}
+
+.ef-btn--primary:hover:not(:disabled) {
+  background: rgba(74, 150, 255, 0.28);
+  border-color: rgba(74, 150, 255, 0.75);
+  box-shadow: 0 0 20px rgba(74, 150, 255, 0.2);
+  color: #fff;
+}
+
+.ef-btn--primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ef-btn--ghost {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ef-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ── Spinner ── */
+.ef-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #4a96ff;
+  border-radius: 50%;
+  animation: ef-spin 0.7s linear infinite;
+}
+
+@keyframes ef-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Success ── */
+.ef-success-icon {
+  margin-bottom: 0.5rem;
+  animation: ef-success-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes ef-success-pop {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .ef-modal {
+    max-height: calc(100dvh - 1rem);
+    border-radius: 16px 16px 0 0;
+    margin-top: auto;
+    align-self: flex-end;
+  }
+
+  .ef-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .ef-body { padding: 1.5rem 1.25rem; }
+  .ef-header { padding: 1rem 1.25rem 0.85rem; }
+  .ef-progress { padding: 1rem 1.25rem; }
+
+  .ef-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .ef-heading { font-size: 1.35rem; }
+}
